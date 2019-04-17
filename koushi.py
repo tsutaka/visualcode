@@ -79,27 +79,18 @@ def draw_koushi2():
 def draw_koushi3():
 
     draw_koushi1()
-
-    # pyxel.text(
-    #     0, 0, 
-    #     '{0}, {1}'.format(pyxel.mouse_x, pyxel.mouse_y),
-    #     15)
-    # pyxel.text(
-    #     0, 10, 
-    #     '{0}'.format(pyxel.btn(pyxel.MOUSE_LEFT_BUTTON)),
-    #     15)
-
+    
     if(pyxel.btn(pyxel.MOUSE_LEFT_BUTTON)):
-        if(tile_matrix[pyxel.mouse_y // 10][pyxel.mouse_x // 10] < 256):
-            tile_matrix[pyxel.mouse_y // 10][pyxel.mouse_x // 10] += 1
+        if(pyxel.mouse_y // 10 >= 0 and pyxel.mouse_y // 10 < 10 and 
+            pyxel.mouse_x // 10 >= 0 and pyxel.mouse_x // 10 < 10):
+            if(tile_matrix[pyxel.mouse_y // 10][pyxel.mouse_x // 10] < 256):
+                tile_matrix[pyxel.mouse_y // 10][pyxel.mouse_x // 10] += 20
     
     for index_y, row in enumerate(tile_matrix):
         for index_x, col in enumerate(row):
-            # pyxel.text(
-            #     index_x * 10,
-            #     index_y * 10,
-            #     '{0}'.format(tile_matrix[index_y][index_x]),
-            #     3)
+
+            if(tile_matrix[index_y][index_x] > 0):
+                tile_matrix[index_y][index_x] -= 1
 
             pyxel.rect(
                 index_x * 10 + 1, 
