@@ -17,7 +17,7 @@ tile_matrix = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], ]
 
 
-def draw_koushi1():
+def draw_rect1():
 
     value_x = 0
     value_y = 0
@@ -40,7 +40,7 @@ def draw_koushi1():
             1)
     return
 
-def draw_koushi2():
+def draw_rect2():
 
     value_x = 0
     value_y = 0
@@ -76,9 +76,9 @@ def draw_koushi2():
                 pyxel.frame_count % 16)
     return
 
-def draw_koushi3():
+def draw_rect3():
 
-    draw_koushi1()
+    draw_rect1()
     
     if(pyxel.btn(pyxel.MOUSE_LEFT_BUTTON)):
         if(pyxel.mouse_y // 10 >= 0 and pyxel.mouse_y // 10 < 10 and 
@@ -87,7 +87,7 @@ def draw_koushi3():
                 tile_matrix[pyxel.mouse_y // 10][pyxel.mouse_x // 10] += 20
     
     for index_y, row in enumerate(tile_matrix):
-        for index_x, col in enumerate(row):
+        for index_x in range(len(row)):
 
             if(tile_matrix[index_y][index_x] > 0):
                 tile_matrix[index_y][index_x] -= 1
@@ -115,10 +115,7 @@ class App:
 
     def draw(self):
         pyxel.cls(0)
-        # pyxel.text(0, 0, "hello world", pyxel.frame_count % 16)
-        # pyxel.blt(61, 66, 0, 0, 0, 38, 16)
-
-        draw_koushi3()
+        draw_rect3()
 
 
 App()
